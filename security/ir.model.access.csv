@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_blockchain_registry_entry_manager,blockchain.registry.entry manager,model_blockchain_registry_entry,group_blockchain_manager,1,1,1,1
+access_blockchain_registry_entry_user,blockchain.registry.entry user,model_blockchain_registry_entry,base.group_user,1,0,0,0

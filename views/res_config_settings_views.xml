@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_blockchain" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.blockchain</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Blockchain Core" string="Blockchain Core" name="odoo_blockchain_core" groups="odoo_blockchain_core.group_blockchain_manager">
+                    <block title="Network Configuration" name="blockchain_network_setting">
+                        <setting id="blockchain_rpc_connection" string="Blockchain Connection" help="Configure the connection to the Ethereum-compatible network.">
+                            <group>
+                                <field name="blockchain_rpc_url" placeholder="https://mainnet.infura.io/v3/..."/>
+                                <field name="blockchain_chain_id"/>
+                                <field name="blockchain_contract_address" placeholder="0x..."/>
+                            </group>
+                            <div>
+                                <button name="action_check_blockchain_connection" type="object" string="Test Connection &amp; Wallet" class="btn btn-link"/>
+                            </div>
+                        </setting>
+                    </block>
+                    
+                    <block title="Security &amp; Fees" name="blockchain_security_fee">
+                         <setting id="blockchain_security_key" string="Private Key Status" help="Status of the Private Key loaded from Environment Variable 'ODOO_BLOCKCHAIN_PRIVATE_KEY'.">
+                             <field name="blockchain_private_key_status" widget="badge" decoration-success="blockchain_private_key_status == 'set'" decoration-danger="blockchain_private_key_status == 'missing'"/>
+                        </setting>
+                        <setting id="blockchain_fee_limit" string="Gas Fee Protection" help="Transactions will only be sent if the network gas price is below this limit.">
+                            <field name="blockchain_max_gas_price_gwei"/>
+                            <div class="text-muted">
+                                If current network gas > Limit, transactions will be queued.
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

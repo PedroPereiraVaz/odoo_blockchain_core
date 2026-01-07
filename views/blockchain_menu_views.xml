@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_odoo_blockchain_core_root"
+              name="Blockchain"
+              groups="odoo_blockchain_core.group_blockchain_manager"
+              web_icon="odoo_blockchain_core,static/description/icon.png"
+              sequence="50"/>
+
+    <record id="action_open_verification_page" model="ir.actions.act_url">
+        <field name="name">Open Public Verifier</field>
+        <field name="url">/blockchain/verify</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_blockchain_registry"
+              name="Registry Logs"
+              parent="menu_odoo_blockchain_core_root"
+              action="action_blockchain_registry_entry"
+              sequence="10"/>
+
+    <menuitem id="menu_blockchain_verifier"
+              name="Public Verifier"
+              parent="menu_odoo_blockchain_core_root"
+              action="action_open_verification_page"
+              sequence="20"/>
+</odoo>
