@@ -11,7 +11,7 @@
         - Gestión de Gas y Colas de Transacciones
         - Uso de Variables de Entorno para máxima seguridad
     """,
-    'author': 'Pedro',
+    'author': 'Pedro Pereira',
     'depends': ['base', 'mail'],
     'data': [
         'security/security_groups.xml',
