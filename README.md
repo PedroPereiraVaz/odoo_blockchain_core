@@ -26,6 +26,9 @@ Este módulo actúa como el **núcleo de infraestructura** para la integración 
 5.  **Revocación On-Chain**: Gestión completa del ciclo de vida, permitiendo revocar documentos inválidos.
 6.  **Trazabilidad**: Integración nativa con `mail.thread` para feedback en tiempo real en el documento origen.
 
+> [!NOTE]
+> Para una visión técnica más detallada de los archivos y estructura, consulta: **[📄 Estructura Técnica](docs/ESTRUCTURA_TECNICA.md)**
+
 ### Arquitectura: ¿Dónde vive la lógica?
 
 El sistema sigue un patrón de diseño **Consumidor-Proveedor**:
@@ -139,6 +142,8 @@ Puedes añadir los campos del mixin a tu vista para feedback visual:
 ---
 
 ## ⚙️ 3. Funcionamiento Interno (Under the hood)
+
+![Diagrama de Flujo Completo](docs/Diagrama%20de%20flujo.png)
 
 Una vez que llamas a `action_blockchain_register()`, el módulo toma el control:
 
