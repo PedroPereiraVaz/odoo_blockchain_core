@@ -1,9 +1,13 @@
 # Odoo Blockchain Core
 
 **Autor:** `Pedro Pereira`
+
 **Versión:** `18.0.1.0.0`
+
 **Categoría:** `Technical/Blockchain`
+
 **Dependencias:** `base`, `mail`
+
 **Librerías Python:** `web3`
 
 Este módulo actúa como el **núcleo de infraestructura** para la integración de Odoo con blockchains compatibles con EVM (Ethereum, Polygon, Sepolia, etc.). Su propósito es abstraer toda la complejidad criptográfica y de gestión de transacciones, permitiendo que cualquier otro módulo funcional de Odoo (Ventas, RRHH, Inventario) pueda "certificar" documentos digitales con una inversión mínima de desarrollo.
