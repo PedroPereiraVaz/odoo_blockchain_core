@@ -1,5 +1,6 @@
 # Odoo Blockchain Core
 
+**Autor:** Pedro Pereira
 **Versión:** 18.0.1.0.0
 **Categoría:** Technical/Blockchain
 **Dependencias:** `base`, `mail`
@@ -105,7 +106,7 @@ El Mixin no sabe qué datos de tu modelo son importantes. Debes decirle qué cer
 
 Tienes dos opciones para iniciar el proceso:
 
-**Opción A: Automática (Recomendada)**
+**Opción A: Automática**
 Sobrescribe el método que valida tu documento.
 
 ```python
@@ -141,7 +142,7 @@ Puedes añadir los campos del mixin a tu vista para feedback visual:
 
 ---
 
-## ⚙️ 3. Funcionamiento Interno (Under the hood)
+## ⚙️ 3. Funcionamiento Interno
 
 ![Diagrama de Flujo Completo](docs/Diagrama%20de%20flujo.png)
 
@@ -190,15 +191,3 @@ Ve a **Ajustes > Blockchain Core**:
 2.  **Chain ID**: ID de la red (1=Mainnet, 11155111=Sepolia).
 3.  **Contract Address**: Dirección del Smart Contract desplegado (`UniversalDocumentRegistry`).
 4.  **Max Gas Price**: Límite de Gwei dispuesto a pagar.
-
----
-
-## 🧪 5. Testing Manual
-
-1.  Asegúrate de tener un nodo local (ej. Hardhat/Anvil) o conexión a Testnet.
-2.  Despliega el contrato `UniversalDocumentRegistry.sol` y copia su dirección.
-3.  Configura Odoo con la dirección y RPC.
-4.  Desde tu módulo consumidor, crea un registro y valídalo.
-5.  Observa `blockchain.registry.entry`. Debería estar en `pending`.
-6.  Ejecuta manualmente la acción planificada **"Blockchain: Process Submission Queue"**.
-7.  El estado debería cambiar a `submitted` (y luego `confirmed` tras minarse).
