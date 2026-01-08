@@ -34,7 +34,7 @@ class ResConfigSettings(models.TransientModel):
         compute='_compute_key_status'
     )
 
-    @api.depends('blockchain_rpc_url') # Dummy dependency to trigger re-compute or on load
+    @api.depends('blockchain_rpc_url') # Dependencia ficticia para activar el recálculo o la carga cuando se cambia la configuración
     def _compute_key_status(self):
         key = os.environ.get('ODOO_BLOCKCHAIN_PRIVATE_KEY')
         for record in self:
@@ -56,7 +56,7 @@ class ResConfigSettings(models.TransientModel):
         if not w3.is_connected():
             raise UserError(_("Could not connect to RPC URL."))
 
-        # Check Private Key / Balance
+        # Comprobamos la clave privada y balance
         key = os.environ.get('ODOO_BLOCKCHAIN_PRIVATE_KEY')
         if not key:
             raise UserError(_("Connection Successful, but Private Key ENV VAR is missing."))

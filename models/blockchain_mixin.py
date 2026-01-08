@@ -7,7 +7,7 @@ class BlockchainCertifiedMixin(models.AbstractModel):
     _description = 'Mixin to enable Blockchain Universal Registration'
 
     blockchain_entry_id = fields.Many2one('blockchain.registry.entry', string='Blockchain Entry', copy=False, readonly=True)
-    blockchain_status = fields.Selection(related='blockchain_entry_id.status', store=True, readonly=True)
+    blockchain_status = fields.Selection(related='blockchain_entry_id.status', string='Blockchain Status', store=True, readonly=True)
     blockchain_hash = fields.Char(related='blockchain_entry_id.content_hash', readonly=True)
     
     def _compute_blockchain_hash(self):
@@ -22,21 +22,20 @@ class BlockchainCertifiedMixin(models.AbstractModel):
         
     def action_blockchain_register(self):
         """
-        Public action to trigger registration.
-        It creates the queue entry.
+        Acción para activar el registro, crea la entrada en cola
         """
         for record in self:
             content_hash = record._compute_blockchain_hash()
             if not content_hash:
                 raise UserError(_("Could not compute hash for this record."))
 
-            # 1. Check if already exists
+            # 1. Comprobamos si ya existe
             entry = self.env['blockchain.registry.entry'].search([
                 ('content_hash', '=', content_hash)
             ], limit=1)
 
             if not entry:
-                # 2. Create new
+                # 2. Sino existe creamos nueva
                 entry = self.env['blockchain.registry.entry'].create({
                     'content_hash': content_hash,
                     'related_model': record._name,
@@ -45,13 +44,11 @@ class BlockchainCertifiedMixin(models.AbstractModel):
                 })
                 record._post_blockchain_message(_("Blockchain Registration Requested. Hash: %s") % content_hash)
             else:
-                # Link existing
+                # Si ya existe
                 if entry.related_model != record._name or entry.related_id != record.id:
-                     # Warn: This hash exists for another object? 
-                     # For now, just link it if we add a Many2one to the mixin later.
                      pass
                 
-                # If it was error, retry
+                # Si existe y esta en error, cambiamos a pendiente para reintentar el registro
                 if entry.status == 'error':
                     entry.status = 'pending'
                     record._post_blockchain_message(_("Retrying Blockchain Registration."))
