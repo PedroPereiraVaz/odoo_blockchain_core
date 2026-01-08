@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- SEARCH -->
+    <!-- BUSCAR -->
     <record id="blockchain_registry_entry_view_search" model="ir.ui.view">
         <field name="name">blockchain.registry.entry.search</field>
         <field name="model">blockchain.registry.entry</field>
@@ -20,7 +20,7 @@
         </field>
     </record>
 
-    <!-- TREE -->
+    <!-- ARBOL -->
     <record id="blockchain_registry_entry_view_tree" model="ir.ui.view">
         <field name="name">blockchain.registry.entry.list</field>
         <field name="model">blockchain.registry.entry</field>
@@ -40,7 +40,7 @@
         </field>
     </record>
 
-    <!-- FORM -->
+    <!-- Formulario -->
     <record id="blockchain_registry_entry_view_form" model="ir.ui.view">
         <field name="name">blockchain.registry.entry.form</field>
         <field name="model">blockchain.registry.entry</field>
@@ -78,7 +78,7 @@
         </field>
     </record>
 
-    <!-- ACTION -->
+    <!-- Acción -->
     <record id="action_blockchain_registry_entry" model="ir.actions.act_window">
         <field name="name">Blockchain Registry</field>
         <field name="res_model">blockchain.registry.entry</field>

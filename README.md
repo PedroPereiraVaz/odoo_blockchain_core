@@ -195,3 +195,20 @@ Ve a **Ajustes > Blockchain Core**:
 2.  **Chain ID**: ID de la red (1=Mainnet, 11155111=Sepolia).
 3.  **Contract Address**: Dirección del Smart Contract desplegado (`UniversalDocumentRegistry`).
 4.  **Max Gas Price**: Límite de Gwei dispuesto a pagar.
+
+---
+
+## 🕵️ 5. Verificador Público Universal
+
+El módulo incluye una **Página Web Pública** para que cualquier tercero pueda verificar la autenticidad de un documento sin necesidad de acceder al backend de Odoo.
+
+- **URL**: `/blockchain/verify` (ej. `https://tu-odoo.com/blockchain/verify`)
+- **Tecnología**: Web3 / Ethers.js (Ejecutado en el navegador del cliente).
+
+### 🔒 Privacidad y Seguridad (Client-Side Hashing)
+
+Esta herramienta ha sido diseñada con la privacidad en mente:
+
+1.  **Zero-Upload**: El documento original **NUNCA se sube al servidor**.
+2.  **Cálculo Local**: El Hash SHA-256 se calcula en el navegador del usuario utilizando la API `crypto.subtle` de HTML5.
+3.  **Verificación Directa**: La consulta de validez se hace **directamente desde el navegador del usuario a la Blockchain**, sin pasar por Odoo. Esto garantiza una verificación "Trustless" (sin confianza necesaria en el servidor central).
