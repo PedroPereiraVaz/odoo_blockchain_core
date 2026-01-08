@@ -1,8 +1,8 @@
 # Odoo Blockchain Core
 
-**Autor:** Pedro Pereira
-**Versión:** 18.0.1.0.0
-**Categoría:** Technical/Blockchain
+**Autor:** `Pedro Pereira`
+**Versión:** `18.0.1.0.0`
+**Categoría:** `Technical/Blockchain`
 **Dependencias:** `base`, `mail`
 **Librerías Python:** `web3`
 
