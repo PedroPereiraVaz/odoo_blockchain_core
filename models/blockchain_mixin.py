@@ -11,11 +11,11 @@ class BlockchainCertifiedMixin(models.AbstractModel):
     blockchain_hash = fields.Char(related='blockchain_entry_id.content_hash', readonly=True)
     
     def _compute_blockchain_hash(self):
-        """ Abstract Method: Must return the SHA256 hex string of the content to certify. """
+        """ Método abstracto: debe devolver la cadena hexadecimal SHA256 del contenido a certificar. """
         raise NotImplementedError("Models consuming blockchain.certified.mixin must implement _compute_blockchain_hash()")
 
     def _post_blockchain_message(self, body, subtype_xmlid='mail.mt_note'):
-        """ Allow the registry to post back to this record's chatter """
+        """ Permitir que el registro vuelva a publicar en el chat de este registro """
         self.ensure_one()
         if hasattr(self, 'message_post'):
             self.message_post(body=body, subtype_xmlid=subtype_xmlid)
@@ -57,7 +57,7 @@ class BlockchainCertifiedMixin(models.AbstractModel):
             
     def action_blockchain_revoke(self):
         """
-        Public action to trigger revocation.
+        Acción pública para provocar la revocación.
         """
         for record in self:
             if not record.blockchain_entry_id:
@@ -67,7 +67,7 @@ class BlockchainCertifiedMixin(models.AbstractModel):
             record._post_blockchain_message(_("Revocation Requested for Hash: %s") % record.blockchain_entry_id.content_hash)
 
     def action_blockchain_verify(self):
-        """ Manual verification check """
+        """ Verificación manual """
         self.ensure_one()
         if self.blockchain_entry_id:
             return self.blockchain_entry_id.action_verify_on_chain_manual()
