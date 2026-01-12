@@ -5,7 +5,7 @@ class BlockchainVerifierController(http.Controller):
     
     @http.route('/blockchain/verify', type='http', auth='public', website=True, sitemap=True)
     def verify_document_page(self, **kwargs):
-        """ Renders the public verification page with backend config """
+        """ Renderiza la página de verificación pública con configuración de backend """
         
         # 1. Obtenemos parametros de la configuración
         params = request.env['ir.config_parameter'].sudo()

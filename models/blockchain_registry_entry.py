@@ -55,7 +55,7 @@ class BlockchainRegistryEntry(models.Model):
     ]
 
     def _post_to_related_chatter(self, body, subtype_xmlid='mail.mt_note'):
-        """ Helper to post messages to the origin document's chatter """
+        """ Helper para publicar mensajes en el chat del documento de origen """
         self.ensure_one()
         if self.related_model and self.related_id:
             try:
@@ -131,7 +131,7 @@ class BlockchainRegistryEntry(models.Model):
             self._submit_transaction(w3, contract, account, record, is_revocation=True, chain_id=chain_id)
 
     def _submit_transaction(self, w3, contract, account, record, is_revocation, chain_id):
-        """ Helper to build, sign and send transaction """
+        """ Helper para construir, firmar y enviar transacción """
         try:
             nonce = w3.eth.get_transaction_count(account.address, 'pending')
             
