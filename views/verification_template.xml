@@ -58,8 +58,18 @@
 
                     let selectedFile = null;
                     const CONTRACT_ABI = [
-                        {"inputs": [{"internalType": "bytes32", "name": "_hash", "type": "bytes32"}], "name": "verifyDocument", "outputs": [{"internalType": "bool", "name": "isValid", "type": "bool"}, {"internalType": "string", "name": "issuerName", "type": "string"}, {"internalType": "string", "name": "issuerTaxId", "type": "string"}, {"internalType": "uint256", "name": "timestamp", "type": "uint256"}, {"internalType": "address", "name": "issuerAddress", "type": "address"}], "stateMutability": "view", "type": "function"}
+                        {"inputs": [{"internalType": "bytes32", "name": "_hash", "type": "bytes32"}], "name": "verifyDocument", "outputs": [{"internalType": "bool", "name": "isValid", "type": "bool"}, {"internalType": "string", "name": "issuerName", "type": "string"}, {"internalType": "string", "name": "issuerTaxId", "type": "string"}, {"internalType": "uint256", "name": "timestamp", "type": "uint256"}, {"internalType": "address", "name": "issuerAddress", "type": "address"}], "stateMutability": "view", "type": "function"},
+                        {"anonymous": false, "inputs": [{"indexed": true, "internalType": "bytes32", "name": "docHash", "type": "bytes32"}, {"indexed": true, "internalType": "address", "name": "issuer", "type": "address"}], "name": "DocumentRevoked", "type": "event"},
+                        {"anonymous": false, "inputs": [{"indexed": true, "internalType": "bytes32", "name": "docHash", "type": "bytes32"}, {"indexed": true, "internalType": "address", "name": "issuer", "type": "address"}], "name": "DocumentRegistered", "type": "event"}
                     ];
+
+                    function getExplorerUrl(chainId, txHash) {
+                        let baseUrl = "https://etherscan.io/tx/";
+                        if (chainId === 11155111) baseUrl = "https://sepolia.etherscan.io/tx/";
+                        else if (chainId === 137) baseUrl = "https://polygonscan.com/tx/";
+                        else if (chainId === 80002) baseUrl = "https://amoy.polygonscan.com/tx/";
+                        return baseUrl + txHash;
+                    }
 
                     // Drag &amp; Drop Visuals
                     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('bg-white'); dropZone.classList.remove('bg-light'); });
@@ -115,15 +125,38 @@
                             const contract = new ethers.Contract(contractAddr, CONTRACT_ABI, provider);
                             const result = await contract.verifyDocument(docHash);
                             
+                            
                             const isValid = result[0];
                             const issuerName = result[1];
                             const issuerTax = result[2];
-                            const date = new Date(result[3] * 1000).toLocaleString();
+                            const timestamp = result[3]; // uint256 (BigNumber)
+                            
+                            // Ethers.js BigNumber check for zero
+                            const isRegistered = !timestamp.eq(0); 
+
+                            // Safe conversion for date (timestamp fits in JS number)
+                            const date = new Date(timestamp.toNumber() * 1000).toLocaleString();
 
                             resultArea.classList.remove('d-none', 'alert-success', 'alert-danger', 'alert-warning');
                             resultArea.innerHTML = '';
 
+                            // Get Chain ID for Explorer URL
+                            const network = await provider.getNetwork();
+                            const chainId = network.chainId;
+                            let txLinkHtml = "";
+
                             if (isValid) {
+                                // CASE 1: VALID - Fetch Registration Transaction
+                                try {
+                                    const filter = contract.filters.DocumentRegistered(docHash);
+                                    const events = await contract.queryFilter(filter);
+                                    if (events.length > 0) {
+                                        const txHash = events[0].transactionHash;
+                                        const url = getExplorerUrl(chainId, txHash);
+                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="${url}" target="_blank" class="btn btn-outline-success btn-sm"><i class="fa fa-external-link me-1"/>Ver en Blockchain</a></p>`;
+                                    }
+                                } catch (e) { console.warn("Error fetching registration tx", e); }
+
                                 resultArea.classList.add('alert', 'alert-success');
                                 resultArea.innerHTML = `
                                     <h4 class="alert-heading"><i class="fa fa-check-circle me-2"/>Documento Válido</h4>
@@ -132,15 +165,49 @@
                                     <p class="mb-1"><strong>ID Fiscal:</strong> ${issuerTax}</p>
                                     <p class="mb-1"><strong>Fecha de Emisión:</strong> ${date}</p>
                                     <p class="mb-0 mt-2"><small>Hash: ${docHash}</small></p>
+                                    ${txLinkHtml}
+                                `;
+                            } else if (isRegistered) {
+                                // CASE 2: REVOKED - Fetch Revocation Transaction
+                                let revokedDateStr = "No disponible";
+                                
+                                try {
+                                    const filter = contract.filters.DocumentRevoked(docHash);
+                                    const events = await contract.queryFilter(filter);
+                                    
+                                    if(events.length > 0) {
+                                        const lastEvent = events[events.length - 1];
+                                        const block = await lastEvent.getBlock();
+                                        revokedDateStr = new Date(block.timestamp * 1000).toLocaleString();
+                                        
+                                        const txHash = lastEvent.transactionHash;
+                                        const url = getExplorerUrl(chainId, txHash);
+                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="${url}" target="_blank" class="btn btn-outline-warning btn-sm"><i class="fa fa-external-link me-1"/>Ver Revocación</a></p>`;
+                                    }
+                                } catch (logErr) {
+                                    console.warn("Could not fetch revocation logs:", logErr);
+                                }
+
+                                resultArea.classList.add('alert', 'alert-warning');
+                                resultArea.innerHTML = `
+                                    <h4 class="alert-heading"><i class="fa fa-ban me-2"/>Documento Revocado</h4>
+                                    <hr/>
+                                    <p class="mb-1"><strong>Emisor:</strong> ${issuerName}</p>
+                                    <p class="mb-1"><strong>ID Fiscal:</strong> ${issuerTax}</p>
+                                    <p class="mb-1"><strong>Fecha de Emisión:</strong> ${date}</p>
+                                    <p class="mb-1 text-danger"><strong>Fecha de Revocación:</strong> ${revokedDateStr}</p>
+                                    <p class="mb-0 mt-2"><small>Hash: ${docHash}</small></p>
+                                    ${txLinkHtml}
                                 `;
                             } else {
-                                // Logic for Invalid/Revoked based only on isValid=false is tricky purely frontend without reverting.
-                                // But usually view functions return default values or false.
+                                // CASE 3: NOT REGISTERED (Timestamp is 0)
                                 resultArea.classList.add('alert', 'alert-danger');
                                 resultArea.innerHTML = `
-                                    <h4 class="alert-heading"><i class="fa fa-times-circle me-2"/>Documento No Válido</h4>
-                                    <p>El documento no se encuentra en el registro o ha sido <strong>revocado</strong>.</p>
-                                    <p class="mb-0"><small>Hash: ${docHash}</small></p>
+                                    <h4 class="alert-heading"><i class="fa fa-times-circle me-2"/>Documento No Registrado</h4>
+                                    <hr/>
+                                    <p class="mb-1">El documento no se encuentra en el registro oficial.</p>
+                                    <p class="mb-1">Podría no haber sido emitido nunca o haber sido modificado.</p>
+                                    <p class="mb-0 mt-2"><small>Hash: ${docHash}</small></p>
                                 `;
                             }
 
