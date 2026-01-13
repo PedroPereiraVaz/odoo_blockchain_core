@@ -153,7 +153,7 @@
                                     if (events.length > 0) {
                                         const txHash = events[0].transactionHash;
                                         const url = getExplorerUrl(chainId, txHash);
-                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="${url}" target="_blank" class="btn btn-outline-success btn-sm"><i class="fa fa-external-link me-1"/>Ver en Blockchain</a></p>`;
+                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="#" onclick="window.open('${url}', '_blank'); return false;" class="btn btn-outline-success btn-sm"><i class="fa fa-external-link me-1"/>Ver en Blockchain</a></p>`;
                                     }
                                 } catch (e) { console.warn("Error fetching registration tx", e); }
 
@@ -182,7 +182,7 @@
                                         
                                         const txHash = lastEvent.transactionHash;
                                         const url = getExplorerUrl(chainId, txHash);
-                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="${url}" target="_blank" class="btn btn-outline-warning btn-sm"><i class="fa fa-external-link me-1"/>Ver Revocación</a></p>`;
+                                        txLinkHtml = `<p class="mb-0 mt-3"><a href="#" onclick="window.open('${url}', '_blank'); return false;" class="btn btn-outline-warning btn-sm"><i class="fa fa-external-link me-1"/>Ver Revocación</a></p>`;
                                     }
                                 } catch (logErr) {
                                     console.warn("Could not fetch revocation logs:", logErr);
