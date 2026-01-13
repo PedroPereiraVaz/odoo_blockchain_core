@@ -1,0 +1,577 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_blockchain_core
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-13 16:00+0000\n"
+"PO-Revision-Date: 2026-01-13 16:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "%s Transaction Sent. Tx Hash: %s"
+msgstr "Transacción %s Enviada. Tx Hash: %s"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "0x..."
+msgstr "0x..."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.verification_page_template
+msgid "<i class=\"fa fa-search me-2\"/>Verificar Documento"
+msgstr "<i class=\"fa fa-search me-2\"/>Verificar Documento"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.verification_page_template
+msgid "<i class=\"fa fa-shield me-2\"/>Verificador Universal"
+msgstr "<i class=\"fa fa-shield me-2\"/>Verificador Universal"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Action FAILED on Blockchain (Reverted)."
+msgstr "Acción FALLIDA en Blockchain (Revertida)."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,help:odoo_blockchain_core.field_res_config_settings__blockchain_contract_address
+msgid "Address of the UniversalDocumentRegistry contract."
+msgstr "Dirección del contrato UniversalDocumentRegistry."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.verification_page_template
+msgid "Arrastra tu archivo aquí"
+msgstr "Arrastra tu archivo aquí"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.verification_page_template
+msgid ""
+"Arrastra tu documento original (PDF, JPG...) para verificar su autenticidad directamente en la Blockchain.\n"
+"                                    <br/>\n"
+"                                    <small>El documento se procesa en tu navegador. <strong>Nunca se sube al servidor.</strong></small>"
+msgstr ""
+"Arrastra tu documento original (PDF, JPG...) para verificar su autenticidad directamente en la Blockchain.\n"
+"                                    <br/>\n"
+"                                    <small>El documento se procesa en tu navegador. <strong>Nunca se sube al servidor.</strong></small>"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__block_timestamp
+msgid "Block Timestamp"
+msgstr "Marca de Tiempo del Bloque"
+
+#. module: odoo_blockchain_core
+#: model:ir.ui.menu,name:odoo_blockchain_core.menu_odoo_blockchain_core_root
+msgid "Blockchain"
+msgstr "Blockchain"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Blockchain Connection"
+msgstr "Conexión Blockchain"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Blockchain Core"
+msgstr "Núcleo Blockchain"
+
+#. module: odoo_blockchain_core
+#: model:ir.model,name:odoo_blockchain_core.model_blockchain_registry_entry
+msgid "Blockchain Document Registry Log"
+msgstr "Registro de Documentos Blockchain"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Blockchain Entries"
+msgstr "Entradas Blockchain"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_certified_mixin__blockchain_entry_id
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_form
+msgid "Blockchain Entry"
+msgstr "Entrada Blockchain"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_res_config_settings__blockchain_rpc_url
+msgid "Blockchain RPC URL"
+msgstr "URL RPC de Blockchain"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Blockchain Registration Queued (Status: Pending)"
+msgstr "Registro en Blockchain En Cola (Estado: Pendiente)"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "Blockchain Registration Requested. Hash: %s"
+msgstr "Registro en Blockchain Solicitado. Hash: %s"
+
+#. module: odoo_blockchain_core
+#: model:ir.actions.act_window,name:odoo_blockchain_core.action_blockchain_registry_entry
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_tree
+msgid "Blockchain Registry"
+msgstr "Registro Blockchain"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_certified_mixin__blockchain_status
+msgid "Blockchain Status"
+msgstr "Estado Blockchain"
+
+#. module: odoo_blockchain_core
+#: model:ir.actions.server,name:odoo_blockchain_core.ir_cron_blockchain_check_receipts_ir_actions_server
+msgid "Blockchain: Check Transaction Receipts"
+msgstr "Blockchain: Comprobar Recibos de Transacción"
+
+#. module: odoo_blockchain_core
+#: model:ir.actions.server,name:odoo_blockchain_core.ir_cron_blockchain_process_queue_ir_actions_server
+msgid "Blockchain: Process Submission Queue"
+msgstr "Blockchain: Procesar Cola de Envíos"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_res_config_settings__blockchain_chain_id
+msgid "Chain ID"
+msgstr "ID de Cadena (Chain ID)"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,help:odoo_blockchain_core.field_res_config_settings__blockchain_chain_id
+msgid "Chain ID for transaction signing (prevents replay attacks)."
+msgstr "ID de Cadena para firmar transacciones (evita ataques de repetición)."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Chain Verification: %s"
+msgstr "Verificación en Cadena: %s"
+
+#. module: odoo_blockchain_core
+#: model:ir.model,name:odoo_blockchain_core.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Configure the connection to the Ethereum-compatible network."
+msgstr "Configure la conexión a la red compatible con Ethereum."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__res_config_settings__blockchain_private_key_status__set
+msgid "Configured"
+msgstr "Configurado"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__confirmed
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid ""
+"Connected to Chain ID %s.\n"
+"Wallet: %s\n"
+"Balance: %s ETH"
+msgstr ""
+"Conectado al ID de Cadena %s.\n"
+"Wallet: %s\n"
+"Balance: %s ETH"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Connection Successful"
+msgstr "Conexión Exitosa"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Connection Successful, but Private Key ENV VAR is missing."
+msgstr "Conexión Exitosa, pero falta la variable de entorno de Clave Privada."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_res_config_settings__blockchain_contract_address
+msgid "Contract Address"
+msgstr "Dirección del Contrato"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Correctly verified as REVOKED on chain."
+msgstr "Verificado correctamente como REVOCADO en la cadena."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "Could not compute hash for this record."
+msgstr "No se pudo calcular el hash para este registro."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Could not connect to RPC URL."
+msgstr "No se pudo conectar a la URL RPC."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__display_name
+msgid "Display Name"
+msgstr "Nombre Mostrado"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Document CONFIRMED on Blockchain."
+msgstr "Documento CONFIRMADO en Blockchain."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_certified_mixin__blockchain_hash
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__content_hash
+msgid "Document Hash"
+msgstr "Hash del Documento"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Document REVOKED on Blockchain."
+msgstr "Documento REVOCADO en Blockchain."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,help:odoo_blockchain_core.field_res_config_settings__blockchain_rpc_url
+msgid "E.g: https://sepolia.infura.io/v3/YOUR-PROJECT-ID"
+msgstr "Ej: https://sepolia.infura.io/v3/TU-PROJECT-ID"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__error
+msgid "Error"
+msgstr "Error"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__error_message
+msgid "Error Message"
+msgstr "Mensaje de Error"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Errors"
+msgstr "Errores"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Gas Fee Protection"
+msgstr "Protección de Comisiones de Gas"
+
+#. module: odoo_blockchain_core
+#: model:ir.module.category,name:odoo_blockchain_core.module_category_blockchain
+msgid "Gestión de Blockchain"
+msgstr "Gestión de Blockchain"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "If current network gas &gt; Limit, transactions will be queued."
+msgstr "Si el gas actual de la red &gt; Límite, las transacciones se pondrán en cola."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__write_uid
+msgid "Last Updated by"
+msgstr "Última Actualización por"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__write_date
+msgid "Last Updated on"
+msgstr "Última Actualización el"
+
+#. module: odoo_blockchain_core
+#: model:res.groups,name:odoo_blockchain_core.group_blockchain_manager
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_res_config_settings__blockchain_max_gas_price_gwei
+msgid "Max Gas Price (Gwei)"
+msgstr "Precio Máximo de Gas (Gwei)"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,help:odoo_blockchain_core.field_res_config_settings__blockchain_max_gas_price_gwei
+msgid ""
+"Maximum gas price (in Gwei) allowed for transactions. If network is more "
+"expensive, transactions will wait in queue."
+msgstr ""
+"Precio máximo de gas (en Gwei) permitido para transacciones. Si la red es más "
+"costosa, las transacciones esperarán en cola."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__res_config_settings__blockchain_private_key_status__missing
+msgid "Missing"
+msgstr "Faltante"
+
+#. module: odoo_blockchain_core
+#: model:ir.model,name:odoo_blockchain_core.model_blockchain_certified_mixin
+msgid "Mixin to enable Blockchain Universal Registration"
+msgstr "Mixin para habilitar el Registro Universal Blockchain"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Model"
+msgstr "Modelo"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Network Configuration"
+msgstr "Configuración de Red"
+
+#. module: odoo_blockchain_core
+#: model:ir.module.category,description:odoo_blockchain_core.module_category_blockchain
+msgid "Niveles de acceso para el módulo de Blockchain."
+msgstr "Niveles de acceso para el módulo de Blockchain."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "No blockchain entry found to revoke."
+msgstr "No se encontró entrada de blockchain para revocar."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "No blockchain entry linked."
+msgstr "No hay entrada de blockchain vinculada."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.actions.act_window,help:odoo_blockchain_core.action_blockchain_registry_entry
+msgid "No documents registered yet."
+msgstr "No hay documentos registrados aún."
+
+#. module: odoo_blockchain_core
+#: model:ir.actions.act_url,name:odoo_blockchain_core.action_open_verification_page
+msgid "Open Public Verifier"
+msgstr "Abrir Verificador Público"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__related_id
+msgid "Origin ID"
+msgstr "ID de Origen"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__related_model
+msgid "Origin Model"
+msgstr "Modelo de Origen"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__pending
+msgid "Pending (Queue)"
+msgstr "Pendiente (Cola)"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__revocation_pending
+msgid "Pending Revocation"
+msgstr "Revocación Pendiente"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Please configure RPC URL first."
+msgstr "Por favor configure la URL RPC primero."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Private Key Error: %s"
+msgstr "Error de Clave Privada: %s"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_res_config_settings__blockchain_private_key_status
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Private Key Status"
+msgstr "Estado de Clave Privada"
+
+#. module: odoo_blockchain_core
+#: model:ir.ui.menu,name:odoo_blockchain_core.menu_blockchain_verifier
+msgid "Public Verifier"
+msgstr "Verificador Público"
+
+#. module: odoo_blockchain_core
+#: model:ir.ui.menu,name:odoo_blockchain_core.menu_blockchain_registry
+msgid "Registry Logs"
+msgstr "Registros"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_form
+msgid "Retry Submission"
+msgstr "Reintentar Envío"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "Retrying Blockchain Registration."
+msgstr "Reintentando Registro en Blockchain."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__revocation_date
+msgid "Revocation Date"
+msgstr "Fecha de Revocación"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_form
+msgid "Revocation Info"
+msgstr "Información de Revocación"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_mixin.py:0
+msgid "Revocation Requested for Hash: %s"
+msgstr "Revocación Solicitada para Hash: %s"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Revocation Requested. Waiting for blockchain submission..."
+msgstr "Revocación Solicitada. Esperando envío a blockchain..."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__revocation_submitted
+msgid "Revocation Submitted"
+msgstr "Revocación Enviada"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__revocation_tx_hash
+msgid "Revocation Tx Hash"
+msgstr "Hash Tx Revocación"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_form
+msgid "Revoke Document"
+msgstr "Revocar Documento"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__revoked
+msgid "Revoked"
+msgstr "Revocado"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,help:odoo_blockchain_core.field_blockchain_certified_mixin__blockchain_hash
+#: model:ir.model.fields,help:odoo_blockchain_core.field_blockchain_registry_entry__content_hash
+msgid "SHA256/Keccak256 hash of the document content."
+msgstr "Hash SHA256/Keccak256 del contenido del documento."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Security & Fees"
+msgstr "Seguridad y Tarifas"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__status
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_search
+msgid "Status"
+msgstr "Estado"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid ""
+"Status of the Private Key loaded from Environment Variable "
+"'ODOO_BLOCKCHAIN_PRIVATE_KEY'."
+msgstr ""
+"Estado de la Clave Privada cargada desde la Variable de Entorno "
+"'ODOO_BLOCKCHAIN_PRIVATE_KEY'."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields.selection,name:odoo_blockchain_core.selection__blockchain_registry_entry__status__submitted
+msgid "Submitted (Waiting Conf)"
+msgstr "Enviado (Esperando Conf)"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "Test Connection & Wallet"
+msgstr "Probar Conexión y Wallet"
+
+#. module: odoo_blockchain_core
+#: model:ir.model.constraint,message:odoo_blockchain_core.constraint_blockchain_registry_entry_content_hash_unique
+msgid "This document hash has already been registered."
+msgstr "Este hash de documento ya ha sido registrado."
+
+#. module: odoo_blockchain_core
+#: model:ir.model.fields,field_description:odoo_blockchain_core.field_blockchain_registry_entry__tx_hash
+msgid "Transaction Hash"
+msgstr "Hash de Transacción"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid ""
+"Transactions will only be sent if the network gas price is below this limit."
+msgstr ""
+"Las transacciones solo se enviarán si el precio del gas de la red está por debajo de este límite."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid "Verification Result"
+msgstr "Resultado de Verificación"
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.blockchain_registry_entry_view_form
+msgid "Verify on Chain"
+msgstr "Verificar en Cadena"
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_config.py:0
+msgid "Web3 library not installed."
+msgstr "Biblioteca Web3 no instalada."
+
+#. module: odoo_blockchain_core
+#. odoo-python
+#: code:addons/odoo_blockchain_core/models/blockchain_registry_entry.py:0
+msgid ""
+"You can only revoke a document that has been fully confirmed on the "
+"blockchain."
+msgstr ""
+"Solo puede revocar un documento que haya sido completamente confirmado en la "
+"blockchain."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.res_config_settings_view_form_blockchain
+msgid "https://mainnet.infura.io/v3/..."
+msgstr "https://mainnet.infura.io/v3/..."
+
+#. module: odoo_blockchain_core
+#: model_terms:ir.ui.view,arch_db:odoo_blockchain_core.verification_page_template
+msgid "o haz clic para seleccionar"
+msgstr "o haz clic para seleccionar"
