@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <!-- Template: Document Confirmed -->
+        <record id="email_template_blockchain_connected" model="mail.template">
+            <field name="name">Blockchain: Documento Confirmado</field>
+            <field name="model_id" ref="model_blockchain_registry_entry"/>
+            <field name="subject">Certificación Blockchain Confirmada</field>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Verdana, sans-serif; font-size: 13px; color: #333;">
+                    <div style="margin: 0 auto; max-width: 600px; border: 1px solid #e7e7e7; border-radius: 5px; overflow: hidden;">
+                        <!-- Header -->
+                        <div style="background-color: #28a745; color: white; padding: 15px; text-align: center;">
+                            <h2 style="margin: 0; font-size: 18px; font-weight: bold;">
+                                <i class="fa fa-check-circle" style="margin-right: 5px;"></i> Documento Confirmado
+                            </h2>
+                        </div>
+                        <!-- Body -->
+                        <div style="padding: 20px; background-color: #ffffff;">
+                            <p style="margin: 0 0 15px 0;">
+                                El documento vinculado ha sido registrado exitosamente en la Blockchain de forma inmutable.
+                            </p>
+                            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 4px; border-left: 4px solid #28a745; margin-bottom: 20px;">
+                                <div style="margin-bottom: 5px;"><strong>Hash del Documento:</strong></div>
+                                <code style="word-break: break-all; color: #666; font-size: 11px;">
+                                    <t t-out="object.content_hash"/>
+                                </code>
+                                <div style="margin-top: 10px; margin-bottom: 5px;"><strong>Tx Hash:</strong></div>
+                                <code style="word-break: break-all; color: #666; font-size: 11px;">
+                                    <t t-out="object.tx_hash"/>
+                                </code>
+                                <div style="margin-top: 10px; font-size: 11px; color: #888;">
+                                    Registrado el: <t t-out="object.block_timestamp or datetime.datetime.now()"/>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <a t-att-href="'/blockchain/verify?hash=' + object.content_hash" 
+                                   style="display: inline-block; padding: 10px 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 30px; font-weight: bold;">
+                                    Verificar Autenticidad
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Footer -->
+                        <div style="padding: 10px; background-color: #f1f1f1; text-align: center; font-size: 10px; color: #777;">
+                            Secured by Odoo Blockchain Core
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+        <!-- Template: Document Revoked -->
+        <record id="email_template_blockchain_revoked" model="mail.template">
+            <field name="name">Blockchain: Documento Revocado</field>
+            <field name="model_id" ref="model_blockchain_registry_entry"/>
+            <field name="subject">Certificación Blockchain REVOCADA</field>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Verdana, sans-serif; font-size: 13px; color: #333;">
+                    <div style="margin: 0 auto; max-width: 600px; border: 1px solid #e7e7e7; border-radius: 5px; overflow: hidden;">
+                        <!-- Header -->
+                        <div style="background-color: #dc3545; color: white; padding: 15px; text-align: center;">
+                            <h2 style="margin: 0; font-size: 18px; font-weight: bold;">
+                                <i class="fa fa-times-circle" style="margin-right: 5px;"></i> Documento Revocado
+                            </h2>
+                        </div>
+                        <!-- Body -->
+                        <div style="padding: 20px; background-color: #ffffff;">
+                            <p style="margin: 0 0 15px 0;">
+                                <strong>ATENCIÓN:</strong> La validez de este documento ha sido REVOCADA permanentemente en la Blockchain.
+                            </p>
+                            <div style="background-color: #fff5f5; padding: 15px; border-radius: 4px; border-left: 4px solid #dc3545; margin-bottom: 20px;">
+                                <div style="margin-bottom: 5px;"><strong>Hash Revocado:</strong></div>
+                                <code style="word-break: break-all; color: #666; font-size: 11px;">
+                                    <t t-out="object.content_hash"/>
+                                </code>
+                                <div style="margin-top: 10px; font-size: 11px; color: #888;">
+                                    Revocado el: <t t-out="object.revocation_date or datetime.datetime.now()"/>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Footer -->
+                         <div style="padding: 10px; background-color: #f1f1f1; text-align: center; font-size: 10px; color: #777;">
+                            Secured by Odoo Blockchain Core
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

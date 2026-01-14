@@ -21,6 +21,7 @@
         'views/verification_template.xml',
         'views/blockchain_registry_entry_views.xml',
         'views/blockchain_menu_views.xml',
+        'data/mail_template_data.xml',
     ],
     'external_dependencies': {
         'python': ['web3'],

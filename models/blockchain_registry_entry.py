@@ -170,9 +170,10 @@ class BlockchainRegistryEntry(models.Model):
             }
             record.write(vals)
             
-            action_name = "Revocation" if is_revocation else "Registration"
-            record._post_to_related_chatter(_("%s Transaction Sent. Tx Hash: %s") % (action_name, tx_hash_hex))
-            _logger.info(f"{action_name} Tx sent for {record.content_hash}: {tx_hash_hex}")
+            action_label = "Revocación" if is_revocation else "Registro"
+            msg = f"Transacción de {action_label} Enviada. Hash Tx: {tx_hash_hex}"
+            record._post_to_related_chatter(msg)
+            _logger.info(f"{action_label} Tx sent for {record.content_hash}: {tx_hash_hex}")
             
         except Exception as e:
             record.write({
@@ -211,21 +212,33 @@ class BlockchainRegistryEntry(models.Model):
                     if is_revocation:
                         record.status = 'revoked'
                         record.revocation_date = fields.Datetime.now()
-                        msg = _("Document REVOKED on Blockchain.")
+                        xml_id = 'odoo_blockchain_core.email_template_blockchain_revoked'
                     else:
                         record.status = 'confirmed'
                         # Optional: Obtenemos el block timestamp
                         block = w3.eth.get_block(receipt['blockNumber'])
                         from datetime import datetime
                         record.block_timestamp = datetime.fromtimestamp(block['timestamp'])
-                        msg = _("Document CONFIRMED on Blockchain.")
+                        xml_id = 'odoo_blockchain_core.email_template_blockchain_connected'
+                    
+                    # Render Template
+                    try:
+                        template = self.env.ref(xml_id, raise_if_not_found=False)
+                        if template:
+                            # Renderizamos el body_html pasando los IDs
+                            msg = template._render_field('body_html', [record.id], compute_lang=True)[record.id]
+                        else:
+                            msg = "El estado del documento se ha actualizado en la Blockchain (Plantilla no encontrada)."
+                    except Exception as e:
+                        _logger.error(f"Error rendering template {xml_id}: {e}")
+                        msg = "El estado del documento se ha actualizado en la Blockchain."
                     
                     record._post_to_related_chatter(msg, subtype_xmlid='mail.mt_comment')
                 else:
                     # Error al registrar transacción
                     record.status = 'error'
-                    record.error_message = f"Transaction {tx_hash} Reverted on Chain"
-                    record._post_to_related_chatter(_("Action FAILED on Blockchain (Reverted)."), subtype_xmlid='mail.mt_comment')
+                    record.error_message = f"Transacción {tx_hash} Revertida en la Cadena"
+                    record._post_to_related_chatter("Acción FALLIDA en Blockchain (Revertida).", subtype_xmlid='mail.mt_comment')
 
         except Exception:
             # Tx no encontrada aún (pending in mempool)
